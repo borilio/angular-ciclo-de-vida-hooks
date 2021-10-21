@@ -1,11 +1,16 @@
-<p>pagina1 works!</p>
 <p>Abre la consola de depuración para ver las salidas por pantalla</p>
+
+<h4>{{nombreInput}}</h4>
 
 <input 
     placeholder="Hola Mundo"
     [(ngModel)]="nombreInput"
     type="text">
 
+<!-- 
+    Al asociar un método al evento, aunque el método no haga nada, 
+    ya provocamos que se ejecuten los AfterViewCheck y AfterContentCheck 
+-->
 <button (click)="guardar()">
     Click
 </button>
