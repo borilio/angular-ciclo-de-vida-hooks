@@ -29,7 +29,7 @@ export class Pagina1Component
 {
   
   //Atributos
-  nombre: string = "Bori";
+  nombreInput: string = "Bori";
   
   //Métodos
   constructor() {
@@ -37,6 +37,8 @@ export class Pagina1Component
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    //Nunca será llamado, ya que el componente no tiene @Inputs
+    //Probamos el OnChanges en el muestra-nombre.component
     console.log('ngOnChanges', changes);
   }
 

@@ -1,10 +1,22 @@
 <p>pagina1 works!</p>
+<p>Abre la consola de depuración para ver las salidas por pantalla</p>
 
 <input 
     placeholder="Hola Mundo"
-    [(ngModel)]="nombre"
+    [(ngModel)]="nombreInput"
     type="text">
 
 <button (click)="guardar()">
     Click
 </button>
+
+<br>
+<br>
+
+<!-- Para que ngOnChanges sea llamado, debe recibir un @Input -->
+<app-muestra-nombre [nombre]="nombreInput"></app-muestra-nombre>
+
+<!-- 
+    Como lo hemos enlazado al input del nombre, cada vez que escribamos algo
+    en el cuadro de texto, se lanzará el método ngOnChanges()
+ -->
