@@ -10,7 +10,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pagina1',
@@ -32,6 +32,7 @@ export class Pagina1Component
   //Atributos
   nombreInput: string = "";
   segundos: number = 0;
+  timerSuscripcion!: Subscription; //Esta es la suscripción que usaremos para cancelar el interval
   
   //Métodos
   constructor() {
@@ -66,12 +67,14 @@ export class Pagina1Component
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
+    this.timerSuscripcion.unsubscribe(); //Y así cancelamos la suscripción del interval
+    console.log("interval cancelado");
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
     //Aquí vamos a incrementar los segundos
-    interval(1000).subscribe(
+    this.timerSuscripcion = interval(1000).subscribe(
       (i) => {
         this.segundos = i; 
         /*
