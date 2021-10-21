@@ -1,4 +1,15 @@
 <h1>Ciclo de Vida de Angular</h1>
 <hr/>
 
-<app-pagina1>
+<!-- 
+    Si ocultamos el componente, lo que hace es QUITARLO, por lo que 
+    se lanza el onDestroy. Realmente no lo ocultamos.
+ -->
+<button (click)="this.ocultar=!this.ocultar">
+    {{ ocultar ? 'Mostrar':'Ocultar' }}
+</button>
+
+<div *ngIf="!ocultar" 
+    style="border: 1px solid blue;">
+    <app-pagina1></app-pagina1>
+</div>
