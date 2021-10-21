@@ -10,6 +10,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-pagina1',
@@ -29,7 +30,8 @@ export class Pagina1Component
 {
   
   //Atributos
-  nombreInput: string = "Bori";
+  nombreInput: string = "";
+  segundos: number = 0;
   
   //Métodos
   constructor() {
@@ -68,6 +70,22 @@ export class Pagina1Component
 
   ngOnInit(): void {
     console.log('ngOnInit');
+    //Aquí vamos a incrementar los segundos
+    interval(1000).subscribe(
+      (i) => {
+        this.segundos = i; 
+        /*
+        Esto se ejecuta cada segundo. Si ocultamos el componente, se llama 
+        a onDestroy y deja de ejecutarse. En principio bien. Pero si volvemos
+        a mostrarlo, veremos que se vuelve a ejecutar, pero no cada segundo, si
+        no más veces todavía. Hay una fuga de memoria  y lo más eficiente sería
+        dejar de estar suscrito al observable liberando así recursos. 
+        No solemos quitar la suscripción a los observables que nos emiten un valor 
+        y ahí terminan (como un apirest). Pero si deberíamos de 'unsubscribe' a 
+        observables que emiten continuamente valores, como este.
+        */
+      }
+    );
   }
 
   guardar(){
