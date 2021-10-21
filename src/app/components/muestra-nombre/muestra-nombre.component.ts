@@ -9,7 +9,6 @@ export class MuestraNombreComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

@@ -27,6 +27,11 @@ export class Pagina1Component
     AfterViewChecked,
     OnDestroy
 {
+  
+  //Atributos
+  nombre: string = "Bori";
+  
+  //Métodos
   constructor() {
     console.log('constructor');
   }
@@ -54,11 +59,16 @@ export class Pagina1Component
   ngAfterViewChecked(): void {
     console.log('ngAfterViewChecked');
   }
+
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
+  }
+
+  guardar(){
+
   }
 }
